@@ -23,3 +23,9 @@
 - Project plan finalized with Claude. Headset arrives end of June (friend's Quest 3) — revised plan to do architecture phase headset-less, VR layer end-June onwards.
 - Created PLAN.md, THIS-WEEK.md, LOG.md as living docs.
 - Next: start W1 tasks — Unity install.
+
+### 2026-05-14
+- Unity 6 + XRI installed, OpenXR configured, Meta Quest build target set.
+- XR scene running clean in editor, no errors.
+- GitHub repo live, first commit pushed.
+- Next: read OSHA 1910.147 this week, schema work starts May 18.
