@@ -29,3 +29,7 @@
 - XR scene running clean in editor, no errors.
 - GitHub repo live, first commit pushed.
 - Next: read OSHA 1910.147 this week, schema work starts May 18.
+
+## 2026-05-18
+- Created ProcedureStep.cs and TrainingProcedure.cs, committed to main
+- Updated timeline with vacation blocks (Jul 20 - Aug 2, Aug 17 - Aug 23)
