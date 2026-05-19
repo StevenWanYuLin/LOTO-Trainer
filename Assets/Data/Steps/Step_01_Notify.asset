@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbebb8d3fec32a45a074df4a982968b, type: 3}
+  m_Name: Step_01_Notify
+  m_EditorClassIdentifier: 
+  stepId: LOTO_01_NOTIFY
+  stepOrder: 1
+  displayName: Notify Affected Employees
+  instruction: Inform all affected employees that equipment will be shut down for
+    maintenance
+  requiredAction: 0
+  targetObjectTag: AffectedEmployee
+  requiredToolTag: 
+  requiresVerification: 0
+  verificationType: 0
+  verificationTargetTag: 
+  pointValue: 10
+  timeLimitSeconds: 0
+  penalisedMistakes: 
+  successFeedback: Affected employees notified.
+  failureFeedback: You must notify affected employees before proceeding.

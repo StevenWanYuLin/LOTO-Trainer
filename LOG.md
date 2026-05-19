@@ -33,3 +33,8 @@
 ## 2026-05-18
 - Created ProcedureStep.cs and TrainingProcedure.cs, committed to main
 - Updated timeline with vacation blocks (Jul 20 - Aug 2, Aug 17 - Aug 23)
+
+## 2026-05-19
+
+- Created Assets/Data/ folder structure (Steps/, Procedures/)
+- Created and filled 6 ProcedureStep assets (Step_01 through Step_06)

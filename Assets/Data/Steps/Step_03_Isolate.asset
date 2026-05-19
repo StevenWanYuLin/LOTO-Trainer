@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbebb8d3fec32a45a074df4a982968b, type: 3}
+  m_Name: Step_03_Isolate
+  m_EditorClassIdentifier: 
+  stepId: LOTO_03_ISOLATE
+  stepOrder: 0
+  displayName: Energy Isolation
+  instruction: Locate and operate all energy isolating devices to isolate the equipment
+  requiredAction: 2
+  targetObjectTag: 
+  requiredToolTag: 
+  requiresVerification: 0
+  verificationType: 0
+  verificationTargetTag: 
+  pointValue: 0
+  timeLimitSeconds: 0
+  penalisedMistakes: 
+  successFeedback: 
+  failureFeedback: 
