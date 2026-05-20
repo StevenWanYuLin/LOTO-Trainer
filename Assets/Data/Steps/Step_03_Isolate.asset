@@ -13,17 +13,18 @@ MonoBehaviour:
   m_Name: Step_03_Isolate
   m_EditorClassIdentifier: 
   stepId: LOTO_03_ISOLATE
-  stepOrder: 0
+  stepOrder: 3
   displayName: Energy Isolation
   instruction: Locate and operate all energy isolating devices to isolate the equipment
   requiredAction: 2
-  targetObjectTag: 
+  targetObjectTag: EnergyIsolationPoint
   requiredToolTag: 
   requiresVerification: 0
   verificationType: 0
   verificationTargetTag: 
-  pointValue: 0
+  pointValue: 10
   timeLimitSeconds: 0
   penalisedMistakes: 
-  successFeedback: 
-  failureFeedback: 
+  successFeedback: Energy isolation devices operated successfully.
+  failureFeedback: All energy isolating devices must be operated before applying
+    lockout.

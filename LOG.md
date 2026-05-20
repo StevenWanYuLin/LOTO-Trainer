@@ -38,3 +38,10 @@
 
 - Created Assets/Data/ folder structure (Steps/, Procedures/)
 - Created and filled 6 ProcedureStep assets (Step_01 through Step_06)
+
+## 2026-05-20
+
+- Created LOTO_Procedure TrainingProcedure asset in Assets/Data/Procedures/
+- Wired all 6 ProcedureStep assets into Steps list (Elements 0–5, in order)
+- Set Passing Score Percent to 80, Regulatory Reference to OSHA 1910.147
+- Set Procedure Id to LOTO_001

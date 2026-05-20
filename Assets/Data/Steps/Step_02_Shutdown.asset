@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Step_02_Shutdown
   m_EditorClassIdentifier: 
   stepId: LOTO_02_SHUTDOWN
-  stepOrder: 0
+  stepOrder: 2
   displayName: Equipment Shutdown
   instruction: Shut down the equipment using the established stopping procedure
   requiredAction: 1
-  targetObjectTag: 
+  targetObjectTag: MachineSwitch
   requiredToolTag: 
   requiresVerification: 0
   verificationType: 0
   verificationTargetTag: 
-  pointValue: 0
+  pointValue: 10
   timeLimitSeconds: 0
   penalisedMistakes: 
-  successFeedback: 
-  failureFeedback: 
+  successFeedback: Equipment shut down successfully.
+  failureFeedback: Equipment must be shut down before isolating energy sources.

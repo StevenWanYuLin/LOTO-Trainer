@@ -13,18 +13,19 @@ MonoBehaviour:
   m_Name: Step_05_Release
   m_EditorClassIdentifier: 
   stepId: LOTO_05_RELEASE
-  stepOrder: 0
+  stepOrder: 5
   displayName: Release/Restrain Stored Energy
   instruction: Release, restrain, or otherwise render safe all potentially hazardous
     stored energy
   requiredAction: 4
-  targetObjectTag: 
+  targetObjectTag: StoredEnergyPoint
   requiredToolTag: 
   requiresVerification: 0
   verificationType: 0
   verificationTargetTag: 
-  pointValue: 0
+  pointValue: 10
   timeLimitSeconds: 0
   penalisedMistakes: 
-  successFeedback: 
-  failureFeedback: 
+  successFeedback: Stored energy released and rendered safe.
+  failureFeedback: All stored energy must be released or restrained before verifying
+    isolation.

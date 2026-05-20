@@ -13,17 +13,18 @@ MonoBehaviour:
   m_Name: Step_06_Verify
   m_EditorClassIdentifier: 
   stepId: LOTO_06_VERIFY
-  stepOrder: 0
+  stepOrder: 6
   displayName: Verify Isolation
   instruction: Verify the equipment is de-energised before starting work
   requiredAction: 5
-  targetObjectTag: 
-  requiredToolTag: 
-  requiresVerification: 0
-  verificationType: 0
-  verificationTargetTag: 
-  pointValue: 0
+  targetObjectTag: VerificationPanel
+  requiredToolTag: Voltmeter
+  requiresVerification: 1
+  verificationType: 3
+  verificationTargetTag: VerificationPanel
+  pointValue: 10
   timeLimitSeconds: 0
   penalisedMistakes: 
-  successFeedback: 
-  failureFeedback: 
+  successFeedback: Equipment verified as de-energised. Safe to proceed.
+  failureFeedback: You must verify the equipment is de-energised before starting
+    work.

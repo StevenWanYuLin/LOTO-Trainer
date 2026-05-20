@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Step_04_Lockout
   m_EditorClassIdentifier: 
   stepId: LOTO_04_LOCKOUT
-  stepOrder: 0
+  stepOrder: 4
   displayName: Apply Lockout Device
   instruction: Apply your personal lock to each energy isolating device
   requiredAction: 3
-  targetObjectTag: 
-  requiredToolTag: 
+  targetObjectTag: LockoutPoint
+  requiredToolTag: Padlock
   requiresVerification: 0
   verificationType: 0
   verificationTargetTag: 
-  pointValue: 0
+  pointValue: 10
   timeLimitSeconds: 0
   penalisedMistakes: 
-  successFeedback: 
-  failureFeedback: 
+  successFeedback: Personal lockout device applied successfully.
+  failureFeedback: You must apply your personal lock to each energy isolating device.
