@@ -30,18 +30,22 @@
 - GitHub repo live, first commit pushed.
 - Next: read OSHA 1910.147 this week, schema work starts May 18.
 
-## 2026-05-18
+### 2026-05-18
 - Created ProcedureStep.cs and TrainingProcedure.cs, committed to main
 - Updated timeline with vacation blocks (Jul 20 - Aug 2, Aug 17 - Aug 23)
 
-## 2026-05-19
+### 2026-05-19
 
 - Created Assets/Data/ folder structure (Steps/, Procedures/)
 - Created and filled 6 ProcedureStep assets (Step_01 through Step_06)
 
-## 2026-05-20
+### 2026-05-20
 
 - Created LOTO_Procedure TrainingProcedure asset in Assets/Data/Procedures/
 - Wired all 6 ProcedureStep assets into Steps list (Elements 0–5, in order)
 - Set Passing Score Percent to 80, Regulatory Reference to OSHA 1910.147
 - Set Procedure Id to LOTO_001
+
+### 2026-05-21
+- Created docs/ folder and wrote procedure-schema.md
+- Covers: why ScriptableObjects, enum reference table, OSHA 1910.147 step mapping, how schema feeds ProcedureRunner

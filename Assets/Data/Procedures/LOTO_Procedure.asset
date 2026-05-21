@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a20750f18731604ba01346d449e6436, type: 3}
   m_Name: LOTO_Procedure
   m_EditorClassIdentifier: 
-  procedureId: 
-  procedureName: 
-  regulatoryReference: 
-  steps: []
-  passingScorePercent: 0
+  procedureId: LOTO_001
+  procedureName: Lockout/Tagout (LOTO) Safety Procedure
+  regulatoryReference: OSHA 1910.147
+  steps:
+  - {fileID: 11400000, guid: 5860439a2d66456439159a7aa392f6fe, type: 2}
+  - {fileID: 11400000, guid: 0c65c7728e96d02479ce07d8a41d0418, type: 2}
+  - {fileID: 11400000, guid: 01ecb5549612f8c4d809b8b34f11e82b, type: 2}
+  - {fileID: 11400000, guid: 00a48536749408a4d8dc5d68516157e9, type: 2}
+  - {fileID: 11400000, guid: 6ce94db266e460c45883a64971854c39, type: 2}
+  - {fileID: 11400000, guid: b0239924678cdbb4886b8d47ce888fc1, type: 2}
+  passingScorePercent: 80
   maxMistakesAllowed: 0
