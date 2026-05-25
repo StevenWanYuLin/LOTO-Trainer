@@ -49,3 +49,10 @@
 ### 2026-05-21
 - Created docs/ folder and wrote procedure-schema.md
 - Covers: why ScriptableObjects, enum reference table, OSHA 1910.147 step mapping, how schema feeds ProcedureRunner
+
+### 2026-05-25
+- Created Assets/Scripts/Runtime/ folder
+- Created ProcedureRunner.cs skeleton: state fields, CurrentStep property, UnityEvents, empty method stubs
+- Compiles clean, no Console errors
+- Added ProcedureRunner GameObject to SampleScene, LOTO_Procedure asset wired into Inspector slot
+- Next: implement StartProcedure(), AdvanceStep(), FailStep() logic
