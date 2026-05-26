@@ -56,3 +56,9 @@
 - Compiles clean, no Console errors
 - Added ProcedureRunner GameObject to SampleScene, LOTO_Procedure asset wired into Inspector slot
 - Next: implement StartProcedure(), AdvanceStep(), FailStep() logic
+
+### 2026-05-26
+- Implemented StartProcedure(), AdvanceStep(), FailStep() in ProcedureRunner.cs
+- FailStep stays on current step (no advance) — correct training sim behaviour
+- Added IsComplete and CurrentStepIndex properties
+- Compiles clean, no Console errors

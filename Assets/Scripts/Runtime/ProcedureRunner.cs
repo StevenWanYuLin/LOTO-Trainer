@@ -7,6 +7,8 @@ public class ProcedureRunner : MonoBehaviour
 
     private int currentStepIndex = -1;
     private bool isRunning = false;
+    public bool IsComplete => !isRunning && currentStepIndex >= (procedure?.steps.Count ?? 0);
+    public int CurrentStepIndex => currentStepIndex;
 
     public ProcedureStep CurrentStep => 
         (isRunning && currentStepIndex >= 0) ? procedure.steps[currentStepIndex] : null;
@@ -18,16 +20,34 @@ public class ProcedureRunner : MonoBehaviour
 
     public void StartProcedure()
     {
-        // TODO Tuesday
+        if (procedure == null || procedure.steps.Count == 0) return;
+        isRunning = true;
+        currentStepIndex = 0;
+        OnStepStarted?.Invoke(CurrentStep);
     }
 
     public void AdvanceStep()
     {
-        // TODO Tuesday
+        if (!isRunning) return;
+
+        OnStepCompleted?.Invoke(CurrentStep);
+
+        currentStepIndex++;
+
+        if (currentStepIndex >= procedure.steps.Count)
+        {
+            isRunning = false;
+            OnProcedureEnded?.Invoke(true); // completed all steps = passed
+            return;
+        }
+
+        OnStepStarted?.Invoke(CurrentStep);
     }
 
     public void FailStep(string reason)
     {
-        // TODO Tuesday
+        if (!isRunning) return;
+        OnMistakeMade?.Invoke(CurrentStep, reason);
+        // Step does NOT advance — trainee must redo the current step
     }
 }
