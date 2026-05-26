@@ -61,4 +61,8 @@
 - Implemented StartProcedure(), AdvanceStep(), FailStep() in ProcedureRunner.cs
 - FailStep stays on current step (no advance) — correct training sim behaviour
 - Added IsComplete and CurrentStepIndex properties
-- Compiles clean, no Console errors
+- Added Canvas UI with Btn_Start, Btn_Advance, Btn_Fail wired to ProcedureRunner
+- Added OnEnable debug listeners to confirm events firing
+- Fixed field name mismatch: stepName → displayName
+- Tested: Start, Advance across 2 steps, Fail staying on current step — all correct
+- Running ahead — Thu will be full 6-step end-to-end + edge case testing

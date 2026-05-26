@@ -50,4 +50,12 @@ public class ProcedureRunner : MonoBehaviour
         OnMistakeMade?.Invoke(CurrentStep, reason);
         // Step does NOT advance — trainee must redo the current step
     }
+
+    void OnEnable()
+    {
+        OnStepStarted.AddListener(step => Debug.Log($"Step started: {step.displayName}"));
+        OnStepCompleted.AddListener(step => Debug.Log($"Step completed: {step.displayName}"));
+        OnMistakeMade.AddListener((step, reason) => Debug.Log($"Mistake on {step.displayName}: {reason}"));
+        OnProcedureEnded.AddListener(passed => Debug.Log($"Procedure ended. Passed: {passed}"));
+    }
 }
