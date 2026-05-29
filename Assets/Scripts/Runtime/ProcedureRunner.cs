@@ -20,6 +20,7 @@ public class ProcedureRunner : MonoBehaviour
 
     public void StartProcedure()
     {
+        if (isRunning) return; // guard against double-start
         if (procedure == null || procedure.steps.Count == 0) return;
         isRunning = true;
         currentStepIndex = 0;

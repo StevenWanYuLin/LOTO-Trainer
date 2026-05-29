@@ -66,3 +66,9 @@
 - Fixed field name mismatch: stepName → displayName
 - Tested: Start, Advance across 2 steps, Fail staying on current step — all correct
 - Running ahead — Thu will be full 6-step end-to-end + edge case testing
+
+### 2026-05-29
+- Full 6-step end-to-end run confirmed: Passed: True
+- Edge cases validated: double-start guard, advance before start, fail on last step, advance after end
+- Fixed double-start bug: added isRunning guard to StartProcedure()
+- W3 complete
