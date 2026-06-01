@@ -72,3 +72,12 @@
 - Edge cases validated: double-start guard, advance before start, fail on last step, advance after end
 - Fixed double-start bug: added isRunning guard to StartProcedure()
 - W3 complete
+
+## 2026-06
+
+### 2026-06-01
+- Created ScoringSystem.cs with TotalSteps, StepsCompleted, MistakeCount, ScorePercent
+- Initialise() resets counters on call — safe for multi-run sessions
+- Added ScoringSystem component to ProcedureRunner GameObject
+- Added _scoring SerializedField to ProcedureRunner, wired in Inspector
+- Next: MistakeDetector.cs tomorrow

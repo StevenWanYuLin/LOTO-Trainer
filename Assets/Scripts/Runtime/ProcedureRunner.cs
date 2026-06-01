@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class ProcedureRunner : MonoBehaviour
 {
     [SerializeField] private TrainingProcedure procedure;
+    [SerializeField] private ScoringSystem _scoring;
 
     private int currentStepIndex = -1;
     private bool isRunning = false;
