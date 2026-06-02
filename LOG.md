@@ -81,3 +81,9 @@
 - Added ScoringSystem component to ProcedureRunner GameObject
 - Added _scoring SerializedField to ProcedureRunner, wired in Inspector
 - Next: MistakeDetector.cs tomorrow
+
+### 2026-06-02
+- Created MistakeDetector.cs in Assets/Scripts/Runtime/
+- Subscribes to ProcedureRunner.OnMistakeMade via AddListener/RemoveListener
+- Tracks full MistakeRecord history (stepIndex, stepId, timestamp)
+- Smoke tested: mistake logged correctly on FailStep, step did not advance
