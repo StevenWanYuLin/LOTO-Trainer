@@ -87,3 +87,11 @@
 - Subscribes to ProcedureRunner.OnMistakeMade via AddListener/RemoveListener
 - Tracks full MistakeRecord history (stepIndex, stepId, timestamp)
 - Smoke tested: mistake logged correctly on FailStep, step did not advance
+
+### 2026-06-03
+- Resolved duplicate ScoringSystem field in ProcedureRunner (_scoring removed)
+- Fixed ScoringSystem call mismatch: replaced RecordStepScore() with RecordStepComplete() / RecordMistake()
+- Added scoringSystem.Initialise(procedure.steps.Count) to StartProcedure()
+- Wired ScoringSystem and MistakeDetector into ProcedureRunner
+- Ran all 6 edge case tests — all passed, no crashes, scoring correct
+- W4 complete

@@ -3,26 +3,31 @@ using UnityEngine.Events;
 
 public class ProcedureRunner : MonoBehaviour
 {
+    [Header("Systems")]
+    public ScoringSystem scoringSystem;
+    public MistakeDetector mistakeDetector;
+
     [SerializeField] private TrainingProcedure procedure;
-    [SerializeField] private ScoringSystem _scoring;
 
     private int currentStepIndex = -1;
     private bool isRunning = false;
     public bool IsComplete => !isRunning && currentStepIndex >= (procedure?.steps.Count ?? 0);
     public int CurrentStepIndex => currentStepIndex;
 
-    public ProcedureStep CurrentStep => 
+    public ProcedureStep CurrentStep =>
         (isRunning && currentStepIndex >= 0) ? procedure.steps[currentStepIndex] : null;
 
     public UnityEvent<ProcedureStep> OnStepStarted;
     public UnityEvent<ProcedureStep> OnStepCompleted;
     public UnityEvent<ProcedureStep, string> OnMistakeMade;
-    public UnityEvent<bool> OnProcedureEnded; // bool = passed
+    public UnityEvent<bool> OnProcedureEnded;
 
     public void StartProcedure()
     {
-        if (isRunning) return; // guard against double-start
+        if (isRunning) return;
         if (procedure == null || procedure.steps.Count == 0) return;
+
+        scoringSystem?.Initialise(procedure.steps.Count); // add this line
         isRunning = true;
         currentStepIndex = 0;
         OnStepStarted?.Invoke(CurrentStep);
@@ -33,13 +38,13 @@ public class ProcedureRunner : MonoBehaviour
         if (!isRunning) return;
 
         OnStepCompleted?.Invoke(CurrentStep);
-
+        scoringSystem?.RecordStepComplete();
         currentStepIndex++;
 
         if (currentStepIndex >= procedure.steps.Count)
         {
             isRunning = false;
-            OnProcedureEnded?.Invoke(true); // completed all steps = passed
+            OnProcedureEnded?.Invoke(true);
             return;
         }
 
@@ -50,7 +55,7 @@ public class ProcedureRunner : MonoBehaviour
     {
         if (!isRunning) return;
         OnMistakeMade?.Invoke(CurrentStep, reason);
-        // Step does NOT advance — trainee must redo the current step
+        scoringSystem?.RecordMistake();
     }
 
     void OnEnable()
