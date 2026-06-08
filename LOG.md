@@ -95,3 +95,9 @@
 - Wired ScoringSystem and MistakeDetector into ProcedureRunner
 - Ran all 6 edge case tests — all passed, no crashes, scoring correct
 - W4 complete
+
+### 2026-06-08
+- Created SessionLogger.cs (MonoBehaviour, Runtime folder)
+- Implemented Initialise(), RecordStepComplete(), RecordMistake(), ExportJSON(), ExportCSV(), GetSessionSummary()
+- Wired SessionLogger into ProcedureRunner — Initialise on start, RecordStepComplete/RecordMistake on events, GetSessionSummary on procedure end
+- Smoke tested full 6-step run — summary output confirmed: 6 steps, 5 mistakes, 5.55s duration

@@ -6,6 +6,7 @@ public class ProcedureRunner : MonoBehaviour
     [Header("Systems")]
     public ScoringSystem scoringSystem;
     public MistakeDetector mistakeDetector;
+    public SessionLogger logger;
 
     [SerializeField] private TrainingProcedure procedure;
 
@@ -27,6 +28,7 @@ public class ProcedureRunner : MonoBehaviour
         if (isRunning) return;
         if (procedure == null || procedure.steps.Count == 0) return;
 
+        logger?.Initialise();
         scoringSystem?.Initialise(procedure.steps.Count); // add this line
         isRunning = true;
         currentStepIndex = 0;
@@ -38,6 +40,7 @@ public class ProcedureRunner : MonoBehaviour
         if (!isRunning) return;
 
         OnStepCompleted?.Invoke(CurrentStep);
+        logger?.RecordStepComplete(CurrentStep);
         scoringSystem?.RecordStepComplete();
         currentStepIndex++;
 
@@ -45,16 +48,20 @@ public class ProcedureRunner : MonoBehaviour
         {
             isRunning = false;
             OnProcedureEnded?.Invoke(true);
+            logger?.GetSessionSummary();
+            Debug.Log(logger?.GetSessionSummary()); // ← add this
             return;
         }
 
         OnStepStarted?.Invoke(CurrentStep);
+
     }
 
     public void FailStep(string reason)
     {
         if (!isRunning) return;
         OnMistakeMade?.Invoke(CurrentStep, reason);
+        logger?.RecordMistake(CurrentStep, reason);
         scoringSystem?.RecordMistake();
     }
 

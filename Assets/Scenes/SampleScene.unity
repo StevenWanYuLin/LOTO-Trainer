@@ -1001,6 +1001,7 @@ GameObject:
   - component: {fileID: 1106811520}
   - component: {fileID: 1106811522}
   - component: {fileID: 1106811523}
+  - component: {fileID: 1106811524}
   m_Layer: 0
   m_Name: ProcedureRunner
   m_TagString: Untagged
@@ -1022,6 +1023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoringSystem: {fileID: 1106811522}
   mistakeDetector: {fileID: 1106811523}
+  logger: {fileID: 1106811524}
   procedure: {fileID: 11400000, guid: f1f4695351756674f98f9a2c37bf561f, type: 2}
   OnStepStarted:
     m_PersistentCalls:
@@ -1087,6 +1089,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   procedureRunner: {fileID: 1106811520}
+--- !u!114 &1106811524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106811519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a579f0262508b34789437b19de274cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sessionId: 
+  steps: []
+  mistakes: []
 --- !u!1 &1487891332
 GameObject:
   m_ObjectHideFlags: 0
