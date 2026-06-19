@@ -30,6 +30,7 @@ public class ProcedureRunner : MonoBehaviour
 
         logger?.Initialise();
         scoringSystem?.Initialise(procedure.steps.Count); // add this line
+        mistakeDetector?.Reset();   // ← add this
         isRunning = true;
         currentStepIndex = 0;
         OnStepStarted?.Invoke(CurrentStep);
@@ -47,9 +48,9 @@ public class ProcedureRunner : MonoBehaviour
         if (currentStepIndex >= procedure.steps.Count)
         {
             isRunning = false;
-            OnProcedureEnded?.Invoke(true);
-            logger?.GetSessionSummary();
-            Debug.Log(logger?.GetSessionSummary()); // ← add this
+            bool passed = mistakeDetector == null || mistakeDetector.TotalMistakes == 0;
+            OnProcedureEnded?.Invoke(passed);
+            Debug.Log(logger?.GetSessionSummary());
             return;
         }
 

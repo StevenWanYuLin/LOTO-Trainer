@@ -101,3 +101,12 @@
 - Implemented Initialise(), RecordStepComplete(), RecordMistake(), ExportJSON(), ExportCSV(), GetSessionSummary()
 - Wired SessionLogger into ProcedureRunner — Initialise on start, RecordStepComplete/RecordMistake on events, GetSessionSummary on procedure end
 - Smoke tested full 6-step run — summary output confirmed: 6 steps, 5 mistakes, 5.55s duration
+
+### 2026-06-19
+- Built Canvas UI: instruction text, score text, mistake text, Start/Advance/Fail buttons
+- Created UIController.cs, subscribed to ProcedureRunner events (OnStepStarted, OnStepCompleted, OnMistakeMade, OnProcedureEnded)
+- Found and fixed bug: ScorePercent didn't factor in MistakeCount, and pass/fail was always true regardless of mistakes
+- Fixed ProcedureRunner.AdvanceStep() to compute Passed from mistakeDetector.TotalMistakes
+- Fixed ScoringSystem.ScorePercent to apply mistake penalty
+- Found and fixed bug: MistakeDetector.Reset() was never called in StartProcedure(), causing mistake count to persist across runs
+- Verified full desktop loop end-to-end: clean run (100%, Passed: True) and mistake run (70%, Passed: False), confirmed reset works correctly across multiple runs
