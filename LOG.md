@@ -110,3 +110,13 @@
 - Fixed ScoringSystem.ScorePercent to apply mistake penalty
 - Found and fixed bug: MistakeDetector.Reset() was never called in StartProcedure(), causing mistake count to persist across runs
 - Verified full desktop loop end-to-end: clean run (100%, Passed: True) and mistake run (70%, Passed: False), confirmed reset works correctly across multiple runs
+
+### 2026-06-22
+- Blocked out ElectricalPanel_Scene: Panel_Housing (cube, scale 0.81/1.21/0.24)
+- Added Breaker_Switch_Main (distinct size/color) + 3x Breaker_Switch (regular)
+- Added LOTO_Tag_Point at main breaker handle, scaled down to read as lock point
+- Placed 6 step markers (sphere proxies) matching ProcedureStep instruction text:
+  Marker_NotifyAffectedEmployees, Marker_EquipmentShutdown, Marker_EnergyIsolation,
+  Marker_ApplyLockoutDevice, Marker_ReleaseRestrainStoredEnergy, Marker_VerifyIsolation
+- Verified panel scale against capsule reference (1.21m height, ~60% of 2m capsule — chest/head height range, matches OSHA panel references)
+- Removed temporary capsule scale-check object
