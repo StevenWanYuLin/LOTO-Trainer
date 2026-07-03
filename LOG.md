@@ -120,3 +120,16 @@
   Marker_ApplyLockoutDevice, Marker_ReleaseRestrainStoredEnergy, Marker_VerifyIsolation
 - Verified panel scale against capsule reference (1.21m height, ~60% of 2m capsule — chest/head height range, matches OSHA panel references)
 - Removed temporary capsule scale-check object
+
+### 2026-07-03
+- Android build pipeline setup — turned into a full debugging session
+- Unity Hub's module installer is broken on current Hub version — Add/remove modules option doesn't exist for Unity 6, so went manual instead
+- Installed JDK 17 (Temurin) and Android Studio (SDK + NDK) outside Unity Hub entirely
+- Hit NDK version mismatch: Android Studio defaults to NDK 30, Unity 6000.1.17f1 requires r27c (27.2.12479018) specifically — installed exact version via SDK Manager with Show Package Details ticked
+- Fixed Minimum API Level: was defaulted to API 24 (Nougat), needed 29 (Android 10) for Quest 3
+- Hit missing CMake 3.22.1 on first build attempt — installed via SDK Manager
+- Pointed Unity's External Tools (JDK/SDK/NDK) manually at real install paths instead of relying on Unity's bundled versions
+- Switched to Meta Quest build profile (separate from plain Android in Unity 6's Build Profiles system)
+- First Android build kicked off, ~10-15 min compile time (expected — cold Gradle cache + no build history yet)
+- Learned: Unity Hub module management flow changed significantly in Unity 6, don't rely on it — manual JDK/SDK/NDK install via Android Studio is more reliable
+- Blocker resolved. Pipeline proven end-to-end before headset arrives tomorrow.
