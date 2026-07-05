@@ -133,3 +133,13 @@
 - First Android build kicked off, ~10-15 min compile time (expected — cold Gradle cache + no build history yet)
 - Learned: Unity Hub module management flow changed significantly in Unity 6, don't rely on it — manual JDK/SDK/NDK install via Android Studio is more reliable
 - Blocker resolved. Pipeline proven end-to-end before headset arrives tomorrow.
+
+### 2026-07-05
+- Headset arrived. Added Rigidbody + XR Grab Interactable to LOTO_Tag_Point (untested on-device)
+- Spent most of the day on dev mode/ADB setup instead:
+  - Registered dev account under wrong dashboard (Wearables Dev Center, for smart glasses) — fixed by switching to Meta Horizon Developer Dashboard (developers.meta.com/horizon/manage)
+  - Installed Oculus ADB drivers, fixed PATH for adb
+  - Found headset was still on friend's account from his coursework — dev mode only works for the account that owns the headset, not a secondary profile
+  - Tried Quest Link as a shortcut (skip ADB) — blocked by ongoing Meta-side Link outage
+  - Swapped headset to my own account, mid-pairing when stopped
+- Blocker: pairing/dev mode not yet confirmed. Next: finish pairing, check dev mode toggle, adb devices, Build and Run, test grab interaction on-device
