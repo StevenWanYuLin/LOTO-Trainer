@@ -143,3 +143,21 @@
   - Tried Quest Link as a shortcut (skip ADB) — blocked by ongoing Meta-side Link outage
   - Swapped headset to my own account, mid-pairing when stopped
 - Blocker: pairing/dev mode not yet confirmed. Next: finish pairing, check dev mode toggle, adb devices, Build and Run, test grab interaction on-device
+
+### 2026-07-09
+
+- Wired 6 Unity Tags (AffectedEmployee, MachineSwitch, EnergyIsolationPoint, LockoutPoint, StoredEnergyPoint, VerificationPanel) matching each ProcedureStep's targetObjectTag, applied to scene objects
+- Retired duplicate proxy markers (Marker_EquipmentShutdown, Marker_ApplyLockoutDevice) now that real geometry (Breaker_Switch_Main, LOTO_Tag_Point) covers those steps
+- Wrote StepInteractionTrigger.cs — bridges XRI Select Entered / Activated events to ProcedureRunner.AdvanceStep() / FailStep("IncorrectTarget"), tag-matched against CurrentStep
+- Wired the trigger onto all 6 interactable objects
+- Unhooked Btn_Advance/Btn_Fail debug listeners from ProcedureRunner — procedure state now only driven by real interactions, not manual UI clicks
+- Spent most of the day on Meta XR Simulator setup instead of testing the above:
+  * No Meta menu in Unity — project never had Meta XR Core SDK installed, only Unity's own XRI/OpenXR
+  * Asset Store install blocked by repeated 404s (school account), switched to scoped registry (npm.developer.oculus.com) in manifest.json instead — worked
+  * Core SDK 203.0.0 installed clean, Meta menu appeared, ran Project Setup Tool fixes
+  * Simulator app install failed via Unity's built-in downloader (file-write error to Downloads), installed manually instead — got v201.0
+  * Session instantly exits on Play: version mismatch between Core SDK (203.0.0) and Simulator app (v201.0)
+  * Tried Preferences > Meta XR Simulator version selector — still serves v201 regardless of selection
+  * Confirmed this is an open, currently-unresolved Meta bug (matches multiple community reports + an active investigation on Meta's own feedback tracker), not a local config issue
+- Decision: dropped Simulator for today, will test StepInteractionTrigger wiring directly on physical Quest 3 tomorrow instead
+- Blocker: Meta XR Simulator version mismatch — upstream bug, no client-side fix found. Not blocking tomorrow's headset test.
