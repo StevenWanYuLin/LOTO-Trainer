@@ -20,7 +20,7 @@
 ## 2026-05
 
 ### 2026-05-13
-- Project plan finalized with Claude. Headset arrives end of June (friend's Quest 3) — revised plan to do architecture phase headset-less, VR layer end-June onwards.
+- Project plan finalized with Claude. Headset arrives end of June (friend's Quest 2) — revised plan to do architecture phase headset-less, VR layer end-June onwards.
 - Created PLAN.md, THIS-WEEK.md, LOG.md as living docs.
 - Next: start W1 tasks — Unity install.
 
@@ -126,7 +126,7 @@
 - Unity Hub's module installer is broken on current Hub version — Add/remove modules option doesn't exist for Unity 6, so went manual instead
 - Installed JDK 17 (Temurin) and Android Studio (SDK + NDK) outside Unity Hub entirely
 - Hit NDK version mismatch: Android Studio defaults to NDK 30, Unity 6000.1.17f1 requires r27c (27.2.12479018) specifically — installed exact version via SDK Manager with Show Package Details ticked
-- Fixed Minimum API Level: was defaulted to API 24 (Nougat), needed 29 (Android 10) for Quest 3
+- Fixed Minimum API Level: was defaulted to API 24 (Nougat), needed 29 (Android 10) for Quest 2
 - Hit missing CMake 3.22.1 on first build attempt — installed via SDK Manager
 - Pointed Unity's External Tools (JDK/SDK/NDK) manually at real install paths instead of relying on Unity's bundled versions
 - Switched to Meta Quest build profile (separate from plain Android in Unity 6's Build Profiles system)
@@ -159,5 +159,21 @@
   * Session instantly exits on Play: version mismatch between Core SDK (203.0.0) and Simulator app (v201.0)
   * Tried Preferences > Meta XR Simulator version selector — still serves v201 regardless of selection
   * Confirmed this is an open, currently-unresolved Meta bug (matches multiple community reports + an active investigation on Meta's own feedback tracker), not a local config issue
-- Decision: dropped Simulator for today, will test StepInteractionTrigger wiring directly on physical Quest 3 tomorrow instead
+- Decision: dropped Simulator for today, will test StepInteractionTrigger wiring directly on physical Quest 2 tomorrow instead
 - Blocker: Meta XR Simulator version mismatch — upstream bug, no client-side fix found. Not blocking tomorrow's headset test.
+
+### 2026-07-10
+- Corrected LOG.md: no Quest 3 ever existed, single headset has always been Quest 2. Updated performance targets accordingly (90Hz still supported on Quest 2, chipset/resolution budget noted).
+- Attempted Meta XR Simulator fix: downgraded Core SDK 203.0.0 → 201.0.0 to match installed Simulator app version. Compiled clean, Project Setup Tool passed (83 verified), but Simulator app itself crash-looped on launch (window flashes and closes in ~1s) — confirmed this is the broken/incomplete manual install from 07-09, not a config issue. Dropped Meta XR Simulator for today, same call as 07-09.
+- Found working alternative: XR Interaction Toolkit's own XR Device Simulator (separate sample from Meta's, imported via Package Manager > XR Interaction Toolkit > Samples > "XR Device Simulator"). Lets me drive the XR rig with mouse/keyboard with zero dependency on Meta's tooling.
+- Added debug logging to StepInteractionTrigger.cs to expose silent failures (null runner, event not firing).
+- Fixed Marker interaction events: switched from Activate to Select Entered — Activate requires pre-selection which doesn't fit single-press proxy points, was blocking events from firing on the Markers.
+- Debugged Breaker_Switch_Main and LOTO_Tag_Point disappearing from scene — restored and re-confirmed StepInteractionTrigger + Select Entered wiring on both.
+- Fixed step 4 (Apply Lockout Device / LOTO_Tag_Point) not firing OnInteracted at all — missing/lost Select Entered wiring, re-added.
+- Full end-to-end test runs via XR Device Simulator:
+  - Run 1: 6/6 steps, 2 mistakes, Passed: False
+  - Run 2: 6/6 steps, 1 mistake, Passed: False
+  - Run 3: 6/6 steps, 0 mistakes, Passed: True — full LOTO procedure confirmed playable end-to-end. MVP wiring validated.
+  - Run 4: input artifact (held trigger + ray sweep in Device Simulator) caused rapid duplicate mistakes across unrelated objects — not a code bug, likely won't reproduce with real controller grips. Noted as optional future polish (debounce guard on StepInteractionTrigger) if it recurs on-device.
+- Blocker: Quest 2 still with friend, dev mode not yet enabled on it. On-device confirmation pass deferred to Monday (07-13). Meta XR Simulator remains unusable — treating XR Device Simulator as the standing fallback going forward.
+- Next: Monday — dev mode flip, deploy build, run the same 6-step checklist for real on hardware.
