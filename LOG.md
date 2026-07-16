@@ -177,3 +177,17 @@
   - Run 4: input artifact (held trigger + ray sweep in Device Simulator) caused rapid duplicate mistakes across unrelated objects — not a code bug, likely won't reproduce with real controller grips. Noted as optional future polish (debounce guard on StepInteractionTrigger) if it recurs on-device.
 - Blocker: Quest 2 still with friend, dev mode not yet enabled on it. On-device confirmation pass deferred to Monday (07-13). Meta XR Simulator remains unusable — treating XR Device Simulator as the standing fallback going forward.
 - Next: Monday — dev mode flip, deploy build, run the same 6-step checklist for real on hardware.
+
+### 2026-07-15
+- Spent three days trying to get Quest 2 to link to laptop for on-device testing (Quest Link / Air Link) — could not get device to connect
+- Blocker: Quest 2 will not link. Deferred on-device pass, treating XR Device Simulator as the validation path in the meantime.
+
+### 2026-07-16
+- Removed Meta XR Core SDK, standalone Simulator app, scoped registry entry, Meta OpenXR feature toggles, orphaned OculusLoader/OculusSettings assets, and a stale Unity.XR.Oculus.Settings config object in ProjectSettings/EditorBuildSettings.asset. Verified via grep: zero remaining Meta/Oculus references in code or assets.
+- Library wipe + reimport surfaced two follow-on bugs from the removal:
+  - Missing-script console spam traced to the orphaned EditorBuildSettings config object — fixed by editing the file directly
+  - Start button silently non-responsive — traced via debug logging to InstructionText/ScoreText/MistakeText blocking raycasts to Btn_Start (later Canvas siblings with Raycast Target on by default)
+- Disabled Raycast Target on all three text labels — Start button functional again
+- Re-ran full 6-step procedure via XR Device Simulator: 6/6 steps completed, 5 mistakes (test interaction order, not a bug), Passed: False, session logged correctly. Confirms procedure engine, scoring, mistake detection, and session logging all intact post-cleanup.
+- Decision: XR Device Simulator is the standing dev tool going forward. Meta XR Simulator fully removed from project.
+- Next: resolve Quest 2 Link connection for on-device pass.
